@@ -2,24 +2,34 @@ import React, { useState } from 'react';
 import './App.css';
 
 function App() {
+  // State to keep track of the selected angle value
   const [angle, setAngle] = useState(0);
 
+  // Handle changes in the text input box
   const handleInputChange = (e) => {
+    // Ensure the value stays within 0 to 360 range
     const value = Math.max(0, Math.min(360, Number(e.target.value)));
     setAngle(value);
   };
 
+  // Handle changes in the slider
   const handleSliderChange = (e) => {
+    // Update the angle state based on the slider's value
     setAngle(Number(e.target.value));
   };
 
+  // Handle changes in the radio buttons
   const handleRadioChange = (e) => {
+    // Update the angle state based on the selected radio button's value
     setAngle(Number(e.target.value));
   };
 
   return (
     <div className="container">
+      {/* Title of the tool */}
       <h1>Angle Selector Tool</h1>
+
+      {/* Text input for angle value */}
       <div className="control">
         <label htmlFor="angleInput">Angle:</label>
         <input
@@ -31,6 +41,8 @@ function App() {
           onChange={handleInputChange}
         />
       </div>
+
+      {/* Slider input for angle value */}
       <div className="control">
         <input
           type="range"
@@ -41,6 +53,8 @@ function App() {
           onChange={handleSliderChange}
         />
       </div>
+
+      {/* Radio buttons for common angle values */}
       <div className="control">
         <label>Common Values:</label>
         <label>
